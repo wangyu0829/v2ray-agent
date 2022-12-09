@@ -1355,7 +1355,7 @@ installV2Ray() {
 	if [[ "${coreInstallType}" != "2" && "${coreInstallType}" != "3" ]]; then
 		if [[ "${selectCoreType}" == "2" ]]; then
 
-			version=$(curl -u USERNAME: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 -s https://api.github.com/repos/v2fly/v2ray-core/releases | jq -r '.[]|select (.prerelease==false)|.tag_name' | grep -v 'v5' | head -1)
+			version=$(curl -u USERNAME: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 -s https://api.github.com/repos/v2fly/v2ray-core/releases | jq -r '.[]|select (.prerelease==false)|.tag_name' | grep -v 'v5' | head -1)
 		else
 			version=${v2rayCoreVersion}
 		fi
@@ -1394,7 +1394,7 @@ installXray() {
 
 	if [[ "${coreInstallType}" != "1" ]]; then
 
-		version=$(curl -u USERNAME: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 -s https://api.github.com/repos/XTLS/Xray-core/releases | jq -r '.[]|select (.prerelease==false)|.tag_name' | head -1)
+		version=$(curl -u USERNAME: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 -s https://api.github.com/repos/XTLS/Xray-core/releases | jq -r '.[]|select (.prerelease==false)|.tag_name' | head -1)
 
 		echoContent green " ---> Xray-core版本:${version}"
 		if wget --help | grep -q show-progress; then
@@ -1439,11 +1439,11 @@ v2rayVersionManageMenu() {
 		echoContent yellow "2.不保证回退后一定可以正常使用"
 		echoContent yellow "3.如果回退的版本不支持当前的config，则会无法连接，谨慎操作"
 		echoContent skyBlue "------------------------Version-------------------------------"
-		curl -u USERNAME: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 -s https://api.github.com/repos/v2fly/v2ray-core/releases | jq -r '.[]|select (.prerelease==false)|.tag_name' | grep -v 'v5' | head -5 | awk '{print ""NR""":"$0}'
+		curl -u USERNAME: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 -s https://api.github.com/repos/v2fly/v2ray-core/releases | jq -r '.[]|select (.prerelease==false)|.tag_name' | grep -v 'v5' | head -5 | awk '{print ""NR""":"$0}'
 
 		echoContent skyBlue "--------------------------------------------------------------"
 		read -r -p "请输入要回退的版本:" selectV2rayVersionType
-		version=$(curl -u USERNAME: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 -s https://api.github.com/repos/v2fly/v2ray-core/releases | jq -r '.[]|select (.prerelease==false)|.tag_name' | grep -v 'v5' | head -5 | awk '{print ""NR""":"$0}' | grep "${selectV2rayVersionType}:" | awk -F "[:]" '{print $2}')
+		version=$(curl -u USERNAME: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 -s https://api.github.com/repos/v2fly/v2ray-core/releases | jq -r '.[]|select (.prerelease==false)|.tag_name' | grep -v 'v5' | head -5 | awk '{print ""NR""":"$0}' | grep "${selectV2rayVersionType}:" | awk -F "[:]" '{print $2}')
 		if [[ -n "${version}" ]]; then
 			updateV2Ray "${version}"
 		else
@@ -1488,10 +1488,10 @@ xrayVersionManageMenu() {
 		echoContent yellow "2.不保证回退后一定可以正常使用"
 		echoContent yellow "3.如果回退的版本不支持当前的config，则会无法连接，谨慎操作"
 		echoContent skyBlue "------------------------Version-------------------------------"
-		curl -u USERNAME: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 -s https://api.github.com/repos/XTLS/Xray-core/releases | jq -r '.[]|select (.prerelease==false)|.tag_name' | head -5 | awk '{print ""NR""":"$0}'
+		curl -u USERNAME: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 -s https://api.github.com/repos/XTLS/Xray-core/releases | jq -r '.[]|select (.prerelease==false)|.tag_name' | head -5 | awk '{print ""NR""":"$0}'
 		echoContent skyBlue "--------------------------------------------------------------"
 		read -r -p "请输入要回退的版本:" selectXrayVersionType
-		version=$(curl -u USERNAME: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 -s https://api.github.com/repos/XTLS/Xray-core/releases | jq -r '.[]|select (.prerelease==false)|.tag_name' | head -5 | awk '{print ""NR""":"$0}' | grep "${selectXrayVersionType}:" | awk -F "[:]" '{print $2}')
+		version=$(curl -u USERNAME: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 -s https://api.github.com/repos/XTLS/Xray-core/releases | jq -r '.[]|select (.prerelease==false)|.tag_name' | head -5 | awk '{print ""NR""":"$0}' | grep "${selectXrayVersionType}:" | awk -F "[:]" '{print $2}')
 		if [[ -n "${version}" ]]; then
 			updateXray "${version}"
 		else
@@ -1515,7 +1515,7 @@ updateV2Ray() {
 		if [[ -n "$1" ]]; then
 			version=$1
 		else
-			version=$(curl -u USERNAME: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 -s https://api.github.com/repos/v2fly/v2ray-core/releases | jq -r '.[]|select (.prerelease==false)|.tag_name' | grep -v 'v5' | head -1)
+			version=$(curl -u USERNAME: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 -s https://api.github.com/repos/v2fly/v2ray-core/releases | jq -r '.[]|select (.prerelease==false)|.tag_name' | grep -v 'v5' | head -1)
 		fi
 		# 使用锁定的版本
 		if [[ -n "${v2rayCoreVersion}" ]]; then
@@ -1539,7 +1539,7 @@ updateV2Ray() {
 		if [[ -n "$1" ]]; then
 			version=$1
 		else
-			version=$(curl -u USERNAME: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 -s https://api.github.com/repos/v2fly/v2ray-core/releases | jq -r '.[]|select (.prerelease==false)|.tag_name' | grep -v 'v5' | head -1)
+			version=$(curl -u USERNAME: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 -s https://api.github.com/repos/v2fly/v2ray-core/releases | jq -r '.[]|select (.prerelease==false)|.tag_name' | grep -v 'v5' | head -1)
 		fi
 
 		if [[ -n "${v2rayCoreVersion}" ]]; then
@@ -1592,7 +1592,7 @@ updateXray() {
 		if [[ -n "$1" ]]; then
 			version=$1
 		else
-			version=$(curl -u USERNAME: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 -s https://api.github.com/repos/XTLS/Xray-core/releases | jq -r ".[]|select (.prerelease==${prereleaseStatus})|.tag_name" | head -1)
+			version=$(curl -u USERNAME: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 -s https://api.github.com/repos/XTLS/Xray-core/releases | jq -r ".[]|select (.prerelease==${prereleaseStatus})|.tag_name" | head -1)
 		fi
 
 		echoContent green " ---> Xray-core版本:${version}"
@@ -1614,7 +1614,7 @@ updateXray() {
 		if [[ -n "$1" ]]; then
 			version=$1
 		else
-			version=$(curl -u USERNAME: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 -s https://api.github.com/repos/XTLS/Xray-core/releases | jq -r ".[]|select (.prerelease==${prereleaseStatus})|.tag_name" | head -1)
+			version=$(curl -u USERNAME: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 -s https://api.github.com/repos/XTLS/Xray-core/releases | jq -r ".[]|select (.prerelease==${prereleaseStatus})|.tag_name" | head -1)
 		fi
 
 		if [[ -n "$1" ]]; then
